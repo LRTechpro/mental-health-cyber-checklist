@@ -44,9 +44,24 @@ def checklist():
         else:
             level = "HIGH – Needs immediate attention!"
 
-        return render_template('result.html', score=score, total=len(questions), level=level, answers=answers, questions=questions)
+        # 🧠 Enhanced detail for each failed question
+        failed_questions = []
+        for q in questions:
+            if answers.get(q) != 'yes':
+                failed_questions.append({
+                    "question": q,
+                    "explanation": "This question was not passed. (Explanation placeholder)",
+                    "exploitation": "Could be exploited by attackers. (Placeholder)",
+                    "client_impact": "Might impact client safety or data.",
+                    "compliance": "Possible HIPAA violation.",
+                    "help": "I can help mitigate this risk."
+                })
+
+        return render_template('result.html', score=score, total=len(questions), level=level,
+                               answers=answers, questions=questions, failed_questions=failed_questions)
 
     return render_template('index.html', questions=questions)
+
 
 @app.route('/download', methods=['POST'])
 def download():
