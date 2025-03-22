@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cybersecurity Checklist</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f5f9fa; margin: 0; padding: 0; }
+        .container { max-width: 800px; margin: 40px auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1); }
+        h1 { color: #007080; text-align: center; }
+        label { display: block; margin-top: 15px; font-weight: bold; }
+        button { margin-top: 20px; background: #007080; color: white; border: none; padding: 10px 20px; font-size: 16px; border-radius: 6px; cursor: pointer; }
+        footer { text-align: center; margin-top: 40px; font-size: 12px; color: #777; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cybersecurity & HIPAA Compliance Checklist</h1>
+        <form method="POST">
+            {% for question in questions %}
+                <label>{{ loop.index }}. {{ question }}</label>
+                <input type="radio" name="{{ question }}" value="yes" required> Yes
+                <input type="radio" name="{{ question }}" value="no"> No
+            {% endfor %}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <footer>
+        Built by Harold Watkins for Maze of Life Resource Center
+    </footer>
+</body>
+</html>
