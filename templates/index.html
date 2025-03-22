@@ -1,19 +1,64 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Cyber Checklist</title>
+    <title>Maze of Life Cyber Checklist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #007080;
+            padding: 20px;
+            color: white;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+            font-size: 1.8em;
+        }
+        .container {
+            max-width: 750px;
+            margin: 40px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            padding: 12px 24px;
+            background-color: #007080;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
 </head>
 <body>
-    <h1>Cyber Posture & Business Continuity Checklist</h1>
-    <form method="POST">
-        {% for question in questions %}
-            <p>
-                <label>{{ loop.index }}. {{ question }}</label><br>
-                <input type="radio" name="{{ question }}" value="yes" required> Yes
-                <input type="radio" name="{{ question }}" value="no"> No
-            </p>
-        {% endfor %}
-        <button type="submit">Submit</button>
-    </form>
+    <header>
+        <h1>Maze of Life Cybersecurity Checklist</h1>
+        <p style="font-style: italic;">Helping you navigate the Maze of Life — securely.</p>
+    </header>
+    <div class="container">
+        <h2>Welcome</h2>
+        <p>This tool helps your organization assess cybersecurity readiness and business continuity posture, aligned with HIPAA and mental health data protection standards.</p>
+        <form action="/checklist">
+            <button type="submit">Start Checklist</button>
+        </form>
+    </div>
+    <footer>
+        Built by Harold Watkins for Maze of Life Resource Center
+    </footer>
 </body>
 </html>
