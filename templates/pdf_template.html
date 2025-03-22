@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Cyber Checklist PDF</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        h1 { color: #006666; }
+        p, li { font-size: 12px; }
+    </style>
+</head>
+<body>
+    <h1>Cyber Posture Checklist Report</h1>
+    <p><strong>Score:</strong> {{ score }} / {{ questions|length }}</p>
+    <p><strong>Risk Level:</strong> {{ level }}</p>
+    <h2>Responses</h2>
+    <ul>
+        {% for question in questions %}
+            <li><strong>{{ question }}</strong><br>
+            Answer: {{ answers.get(question) }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

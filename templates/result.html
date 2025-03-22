@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checklist Results</title>
+</head>
+<body>
+    <h1>Checklist Results</h1>
+    <p>Your Score: {{ score }} out of {{ total }}</p>
+    <p><strong>Cyber Risk Level:</strong> {{ level }}</p>
+
+    <h2>What This Means for Your Organization</h2>
+    <p>Your score reflects how prepared your mental health organization is to protect sensitive client data, maintain service continuity, and stay aligned with HIPAA and ethical standards.</p>
+    <ul>
+        <li><strong>16–18 (Low Risk):</strong> Excellent! You’ve built strong practices around confidentiality, incident response, and operational continuity.</li>
+        <li><strong>10–15 (Moderate Risk):</strong> You're on the right path, but there are gaps to address—like formalizing policies or training staff.</li>
+        <li><strong>Below 10 (High Risk):</strong> High vulnerability. Consider addressing cybersecurity, business continuity, and HIPAA-readiness together.</li>
+    </ul>
+
+    <form method="POST" action="/download">
+        {% for question in questions %}
+            <input type="hidden" name="{{ question }}" value="{{ answers.get(question) }}">
+        {% endfor %}
+        <button type="submit">Download PDF Report</button>
+    </form>
+
+    <br><a href="/">Start Over</a>
+</body>
+</html>

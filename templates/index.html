@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cyber Checklist</title>
+</head>
+<body>
+    <h1>Cyber Posture & Business Continuity Checklist</h1>
+    <form method="POST">
+        {% for question in questions %}
+            <p>
+                <label>{{ loop.index }}. {{ question }}</label><br>
+                <input type="radio" name="{{ question }}" value="yes" required> Yes
+                <input type="radio" name="{{ question }}" value="no"> No
+            </p>
+        {% endfor %}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
