@@ -2,23 +2,33 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Cyber Checklist PDF</title>
+    <title>Maze of Life Cyber Checklist Report</title>
     <style>
-        body { font-family: Arial, sans-serif; }
-        h1 { color: #006666; }
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        h1 { color: #007080; font-size: 22px; }
+        h2 { color: #004d4d; font-size: 18px; margin-top: 30px; }
         p, li { font-size: 12px; }
+        .footer { margin-top: 40px; font-size: 10px; text-align: center; color: #666; }
+        .branding { margin-bottom: 20px; font-size: 14px; color: #007080; font-weight: bold; }
     </style>
 </head>
 <body>
+    <div class="branding">Maze of Life Resource Center – Cybersecurity Report</div>
     <h1>Cyber Posture Checklist Report</h1>
     <p><strong>Score:</strong> {{ score }} / {{ questions|length }}</p>
     <p><strong>Risk Level:</strong> {{ level }}</p>
-    <h2>Responses</h2>
+
+    <h2>Checklist Responses</h2>
     <ul>
         {% for question in questions %}
             <li><strong>{{ question }}</strong><br>
             Answer: {{ answers.get(question) }}</li>
         {% endfor %}
     </ul>
+
+    <div class="footer">
+        Built by Harold Watkins | Helping you navigate the Maze of Life — securely.<br>
+        This report reflects internal cyber posture awareness and does not constitute a formal audit.
+    </div>
 </body>
 </html>
