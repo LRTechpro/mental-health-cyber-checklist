@@ -61,6 +61,9 @@ def checklist():
                                answers=answers, questions=questions, failed_questions=failed_questions)
 
     return render_template('index.html', questions=questions)
+    if __name__ == '__main__':
+    app.run(debug=True)
+
 
 
 @app.route('/download', methods=['POST'])
@@ -86,3 +89,4 @@ def download():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
