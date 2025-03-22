@@ -2,6 +2,14 @@
 <html>
 <head>
     <title>Checklist Results</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f9f9f9; }
+        h1 { color: #007080; }
+        h2 { margin-top: 30px; color: #004d4d; }
+        .fail-section { background: #fff3f3; border-left: 4px solid #e00; padding: 10px 15px; margin: 20px 0; }
+        .fail-section h3 { margin-bottom: 5px; }
+        .footer { margin-top: 40px; font-size: 12px; text-align: center; color: #777; }
+    </style>
 </head>
 <body>
     <h1>Checklist Results</h1>
@@ -16,6 +24,17 @@
         <li><strong>Below 10 (High Risk):</strong> High vulnerability. Consider addressing cybersecurity, business continuity, and HIPAA-readiness together.</li>
     </ul>
 
+    {% for failure in failed_questions %}
+    <div class="fail-section">
+        <h3>{{ loop.index }}. {{ failure.question }}</h3>
+        <p><strong>What this means:</strong> {{ failure.explanation }}</p>
+        <p><strong>How attackers can exploit this:</strong> {{ failure.exploitation }}</p>
+        <p><strong>Impact on clients:</strong> {{ failure.client_impact }}</p>
+        <p><strong>Compliance issue:</strong> {{ failure.compliance }}</p>
+        <p><strong>How I can help:</strong> {{ failure.help }}</p>
+    </div>
+    {% endfor %}
+
     <form method="POST" action="/download">
         {% for question in questions %}
             <input type="hidden" name="{{ question }}" value="{{ answers.get(question) }}">
@@ -24,5 +43,8 @@
     </form>
 
     <br><a href="/">Start Over</a>
+    <div class="footer">
+        Built by Harold Watkins for Maze of Life Resource Center
+    </div>
 </body>
 </html>
