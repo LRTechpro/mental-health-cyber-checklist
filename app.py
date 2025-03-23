@@ -26,6 +26,31 @@ questions = [
     "Is there a clear way for staff to report suspicious emails or activity?"
 ]
 
+explanations = {
+    "Do you regularly back up client records and scheduling data?": {
+        "why": "Backups protect sensitive client data from loss due to ransomware, accidental deletion, or hardware failure.",
+        "exploit": "Attackers could encrypt or delete data, leaving the organization without recovery options.",
+        "impact": "Client records, appointments, and treatment history may be lost, disrupting care and trust.",
+        "compliance": "HIPAA §164.308(a)(7)(ii)(A) – Requires data backup plans.",
+        "help": "I can configure secure, automatic backups with audit trails and off-site storage options."
+    },
+    "Are backups stored in a secure, HIPAA-compliant location?": {
+        "why": "Secure, compliant storage ensures backups aren't vulnerable to physical or digital threats.",
+        "exploit": "An attacker or natural disaster could destroy on-site backups or access insecure cloud storage.",
+        "impact": "Permanent loss of client data and potential data breaches.",
+        "compliance": "HIPAA §164.308(a)(1)(ii)(A) – Risk mitigation through secure systems.",
+        "help": "I can help transition to encrypted, HIPAA-compliant cloud solutions."
+    },
+    "Are backups tested regularly to ensure they can be restored?": {
+        "why": "A backup that hasn’t been tested may fail when you need it most.",
+        "exploit": "Data may be corrupted or incompatible during a restore, leaving the organization vulnerable.",
+        "impact": "Loss of continuity of care, potential HIPAA violations, and client service disruption.",
+        "compliance": "HIPAA §164.308(a)(7)(ii)(D) – Requires testing procedures.",
+        "help": "I can implement a backup testing process and verify data integrity regularly."
+    }
+    # Additional explanation entries go here as needed...
+}
+
 @app.route('/')
 def home():
     return render_template('home.html')
@@ -98,4 +123,3 @@ def download():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
