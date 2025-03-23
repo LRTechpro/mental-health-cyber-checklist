@@ -1,34 +1,99 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checklist Results</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom right, #e0f7fa, #f1f8e9);
+            color: #333;
+            margin: 0;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #00695c;
+        }
+        .risk-level {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #c62828;
+        }
+        .section {
+            margin-top: 2rem;
+        }
+        .question-block {
+            background: #f9fbe7;
+            border-left: 4px solid #9ccc65;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+        }
+        .question-block h3 {
+            margin-top: 0;
+            color: #33691e;
+        }
+        .footer {
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            text-align: center;
+            color: #777;
+        }
+        .btn-download {
+            display: inline-block;
+            margin-top: 1rem;
+            background-color: #4caf50;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+        a.btn-download:hover {
+            background-color: #388e3c;
+        }
+    </style>
 </head>
 <body>
-    <h1>Checklist Results</h1>
-    <p>Your Score: {{ score }} out of {{ total }}</p>
-    <p><strong>Cyber Risk Level:</strong> {{ level }}</p>
+    <div class="container">
+        <h1>Checklist Results</h1>
+        <p>Your Score: {{ score }} out of {{ total }}</p>
+        <p class="risk-level">Cyber Risk Level: {{ level }}</p>
 
-    <h2>Areas Needing Attention</h2>
-    {% for item in failed_questions %}
-        <h4>{{ item.question }}</h4>
-        <ul>
-            <li><strong>Why it matters:</strong> {{ item.explanation }}</li>
-            <li><strong>How you could be attacked:</strong> {{ item.exploitation }}</li>
-            <li><strong>Client impact:</strong> {{ item.client_impact }}</li>
-            <li><strong>Compliance Risk:</strong> {{ item.compliance }}</li>
-            <li><strong>How I can help:</strong> {{ item.help }}</li>
-        </ul>
-        <hr>
-    {% endfor %}
+        <div class="section">
+            <h2>Areas Needing Attention</h2>
+            {% for item in failed_questions %}
+                <div class="question-block">
+                    <h3>{{ item.question }}</h3>
+                    <p><strong>Why it matters:</strong> {{ item.explanation }}</p>
+                    <p><strong>How you could be attacked:</strong> {{ item.exploitation }}</p>
+                    <p><strong>Client impact:</strong> {{ item.client_impact }}</p>
+                    <p><strong>Compliance Risk:</strong> {{ item.compliance }}</p>
+                    <p><strong>How I can help:</strong> {{ item.help }}</p>
+                </div>
+            {% endfor %}
+        </div>
 
-    <form action="/download" method="post">
-        {% for key, value in answers.items() %}
-            <input type="hidden" name="{{ key }}" value="{{ value }}">
-        {% endfor %}
-        <button type="submit">Download PDF Report</button>
-    </form>
+        <form action="/download" method="post">
+            {% for q in questions %}
+                <input type="hidden" name="{{ q }}" value="{{ answers[q] }}">
+            {% endfor %}
+            <button class="btn-download" type="submit">Download PDF Report</button>
+        </form>
 
-    <br>
-    <a href="/checklist">Start Over</a>
+        <div class="footer">
+            Built by Harold Watkins | Cybersecurity for Mental Health<br>
+            Empowering organizations like Maze of Life to protect clients and ensure HIPAA compliance.
+        </div>
+    </div>
 </body>
 </html>
