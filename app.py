@@ -155,8 +155,6 @@ explanations = {
     }
 }
 
-    # Add more explanation entries as needed...
-
 @app.route('/')
 def home():
     return render_template('home.html')
@@ -174,16 +172,15 @@ def checklist():
         else:
             level = "HIGH – Needs immediate attention!"
 
-        # Enhanced failed question feedback
         failed_questions = []
         for q in questions:
             if answers.get(q) != 'yes':
                 details = explanations.get(q, {})
                 failed_questions.append({
                     "question": q,
-                    "explanation": details.get("explanation", "No explanation provided."),
-                    "exploitation": details.get("exploitation", "No data."),
-                    "client_impact": details.get("client_impact", "No impact info."),
+                    "explanation": details.get("why", "No explanation provided."),
+                    "exploitation": details.get("exploit", "No data."),
+                    "client_impact": details.get("impact", "No impact info."),
                     "compliance": details.get("compliance", "HIPAA impact unknown."),
                     "help": details.get("help", "I can assist with improving this area.")
                 })
