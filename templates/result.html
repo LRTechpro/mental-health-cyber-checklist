@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checklist Results</title>
+</head>
+<body>
+    <h1>Checklist Results</h1>
+    <p>Your Score: {{ score }} out of {{ total }}</p>
+    <p><strong>Cyber Risk Level:</strong> {{ level }}</p>
+
+    <h2>Areas Needing Attention</h2>
+    {% for item in failed_questions %}
+        <h4>{{ item.question }}</h4>
+        <ul>
+            <li><strong>Why it matters:</strong> {{ item.explanation }}</li>
+            <li><strong>How you could be attacked:</strong> {{ item.exploitation }}</li>
+            <li><strong>Client impact:</strong> {{ item.client_impact }}</li>
+            <li><strong>Compliance Risk:</strong> {{ item.compliance }}</li>
+            <li><strong>How I can help:</strong> {{ item.help }}</li>
+        </ul>
+        <hr>
+    {% endfor %}
+
+    <form action="/download" method="post">
+        {% for key, value in answers.items() %}
+            <input type="hidden" name="{{ key }}" value="{{ value }}">
+        {% endfor %}
+        <button type="submit">Download PDF Report</button>
+    </form>
+
+    <br>
+    <a href="/checklist">Start Over</a>
+</body>
+</html>
