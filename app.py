@@ -163,7 +163,6 @@ explanations = {
         "help": "I can implement HIPAA-compliant, encrypted cloud backup solutions."
     },
     # Add more explanation entries as needed...
-}
 
 @app.route('/')
 def home():
