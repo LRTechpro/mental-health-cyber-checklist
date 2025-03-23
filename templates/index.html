@@ -1,30 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Cybersecurity Checklist</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Checklist - Mental Health Org</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f5f9fa; margin: 0; padding: 0; }
-        .container { max-width: 800px; margin: 40px auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1); }
-        h1 { color: #007080; text-align: center; }
-        label { display: block; margin-top: 15px; font-weight: bold; }
-        button { margin-top: 20px; background: #007080; color: white; border: none; padding: 10px 20px; font-size: 16px; border-radius: 6px; cursor: pointer; }
-        footer { text-align: center; margin-top: 40px; font-size: 12px; color: #777; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url('https://images.unsplash.com/photo-1581093588401-12f7c513a7d3?fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2em auto;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 2em;
+            border-radius: 10px;
+        }
+        h1 {
+            text-align: center;
+            color: #00d0ff;
+        }
+        form {
+            margin-top: 1.5em;
+        }
+        label {
+            display: block;
+            margin: 1em 0 0.5em;
+            font-weight: bold;
+        }
+        input[type="radio"] {
+            margin-right: 0.5em;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 1em;
+            margin-top: 2em;
+            background-color: #00d0ff;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #00b4e0;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Cybersecurity & HIPAA Compliance Checklist</h1>
+        <h1>Cybersecurity & Continuity Checklist</h1>
         <form method="POST">
             {% for question in questions %}
-                <label>{{ loop.index }}. {{ question }}</label>
+                <label>{{ question }}</label>
                 <input type="radio" name="{{ question }}" value="yes" required> Yes
                 <input type="radio" name="{{ question }}" value="no"> No
             {% endfor %}
-            <button type="submit">Submit</button>
+            <button class="submit-btn" type="submit">Submit</button>
         </form>
     </div>
-    <footer>
-        Built by Harold Watkins for Maze of Life Resource Center
-    </footer>
 </body>
 </html>
