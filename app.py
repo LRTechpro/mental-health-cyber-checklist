@@ -154,14 +154,7 @@ explanations = {
         "help": "I can implement a simple reporting workflow with alerts and escalation."
     }
 }
-,
-    questions[1]: {
-        "explanation": "Secure cloud backups ensure data is protected even if your site is compromised.",
-        "exploitation": "Local backups can be lost in a fire, flood, or ransomware.",
-        "client_impact": "Permanent data loss and legal exposure.",
-        "compliance": "HIPAA §164.308(a)(1)(ii)(A) – Risk mitigation.",
-        "help": "I can implement HIPAA-compliant, encrypted cloud backup solutions."
-    },
+
     # Add more explanation entries as needed...
 
 @app.route('/')
